@@ -1,9 +1,9 @@
 <script>
-import { tableMixin } from '@robotx/packages'
+import { RxTableMixin } from '@robotx/packages'
 
 export default {
   mixins: [
-    tableMixin
+    RxTableMixin
   ]
 }
 </script>

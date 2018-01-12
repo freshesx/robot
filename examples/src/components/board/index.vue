@@ -1,9 +1,9 @@
 <script>
-import { boardMixin } from '@robotx/packages'
+import { RxBoardMixin } from '@robotx/packages'
 
 export default {
   mixins: [
-    boardMixin
+    RxBoardMixin
   ]
 }
 </script>
