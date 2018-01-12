@@ -1,0 +1,67 @@
+@import "../mixins/headings";
+
+//
+// h1 ~ h6
+//
+@include headings {
+  margin: 0;
+
+  small {
+    color: #666;
+    font-weight: 300;
+  }
+}
+
+h1 {
+  font-size: 2.25rem;   // 36px
+  font-weight: 200;
+}
+
+h2 {
+  font-size: 1.875rem;  // 30px
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.has-center-text {
+  text-align: center !important;
+}
+
+.has-left-text {
+  text-align: left !important;
+}
+
+.has-right-text {
+  text-align: right !important;
+}
+
+.has-block {
+  display: block;
+}
+
+.has-inline-block {
+  display: inline-block;
+}
+
+.has-inline {
+  display: inline;
+}
