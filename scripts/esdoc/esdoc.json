@@ -1,0 +1,16 @@
+{
+  "source": "./packages",
+  "destination": "./docs/api",
+  "includes": [
+    "\\.js$"
+  ],
+  "excludes": [
+    "dist",
+    "node_modules"
+  ],
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+@import "../vars";
+
+@mixin make-arrow($border-width: 2px) {
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  align-content: flex-end;
+  height: 8px;
+  width: 8px;
+  border-width: $border-width $border-width 0 0;
+  border-color: #c8c8cd;
+  border-style: solid;
+  transform: rotate(45deg);
+}

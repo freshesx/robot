@@ -1,0 +1,13 @@
+.DS_Store
+.vscode
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+scripts/jest/coverage
+scripts/e2e/reports
+selenium-debug.log
+docs/jsdoc
+docs/api
+docs/vue
