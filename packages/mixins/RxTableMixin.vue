@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'rx-table-mixin'
+  name: 'RxTableMixin'
 }
 </script>

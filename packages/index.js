@@ -1,7 +1,7 @@
-import boardMixin from './mixins/boardMixin'
-import tableMixin from './mixins/tableMixin'
+import RxBoardMixin from './mixins/RxBoardMixin'
+import RxTableMixin from './mixins/RxTableMixin'
 
 export {
-  boardMixin,
-  tableMixin
+  RxBoardMixin,
+  RxTableMixin
 }

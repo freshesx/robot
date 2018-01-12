@@ -17,7 +17,7 @@
 import { RxRoutes } from '../routes'
 
 export default {
-  name: 'rx-layout-mixin',
+  name: 'RxBoardMixin',
   components: {
     RxRoutes
   },
