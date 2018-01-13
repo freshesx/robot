@@ -6,6 +6,12 @@
 
 <script>
 export default {
-  name: 'RxRoutes'
+  name: 'RxRoutes',
+  props: {
+    routes: {
+      type: Array,
+      default: () => []
+    }
+  }
 }
 </script>
