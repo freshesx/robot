@@ -46,6 +46,11 @@ export default {
         name: 'homepage'
       })
     }
+  },
+  created () {
+    if (this.sessionTabs.length === 0) {
+      this.newSessionTab()
+    }
   }
 }
 </script>
