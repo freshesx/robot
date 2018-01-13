@@ -2,24 +2,51 @@
   <div class="rx-pages">
     <div class="rx-pages-tab"
       :class="{
-        'is-active': tab === 1
+        'is-active': key === activeTabIndex
       }"
-      :key="tab"
-      v-for="tab in 6"
+      :key="key"
+      v-for="(tab, key) in sessionTabs"
     >
-      {{ `tab(${tab})` }}
+      {{ tab.title }}
       <div class="rx-pages-btns">
         <button class="rx-pages-btn">C</button>
         <button class="rx-pages-btn">X</button>
       </div>
     </div>
-    <div class="rx-pages-tab is-plus">+</div>
+    <div
+      class="rx-pages-tab is-plus"
+      @click="newSessionTab"
+    >+</div>
   </div>
 </template>
 
 <script>
+import { get } from 'lodash'
+
 export default {
-  name: 'RxPages'
+  name: 'RxPages',
+  computed: {
+    sessionTabs () {
+      if (!this.$store.state.robotxStore) {
+        throw new Error('The robotx store isn\'t used in store.')
+      }
+      return this.$store.state.robotxStore.sessionTabs || []
+    },
+    activeTabIndex () {
+      return this.$store.state.robotxStore.activeTabIndex
+    }
+  },
+  methods: {
+    newSessionTab () {
+      const route = this.$router.resolve({ name: 'homepage' })
+      const title = get(route, 'resolved.meta.title', 'untitle')
+
+      this.$store.dispatch('rxNewSessionTab', {
+        title,
+        name: 'homepage'
+      })
+    }
+  }
 }
 </script>
 
