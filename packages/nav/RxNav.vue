@@ -4,7 +4,7 @@
     <div class="rx-nav-items">
       <rx-nav-item
         :item="route"
-        v-for="(route, key) in filterNavRoutes(routes)" :key="key"
+        v-for="(route, key) in routes" :key="key"
       />
     </div>
   </div>
@@ -12,7 +12,6 @@
 
 <script>
 import RxNavItem from './RxNavItem'
-import { filterNavRoutes } from './helpers'
 
 export default {
   name: 'RxNav',
@@ -24,9 +23,6 @@ export default {
       type: Array,
       default: () => []
     }
-  },
-  methods: {
-    filterNavRoutes
   }
 }
 </script>
