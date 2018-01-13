@@ -1,7 +1,7 @@
 <template>
   <div class="rx-layout">
     <div class="rx-layout-aside">
-      <rx-routes :routes="routes"/>
+      <rx-nav-bar :routes="routes"/>
     </div>
     <div class="rx-layout-container">
       <div class="rx-layout-header"></div>
@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import { RxRoutes } from '../routes'
+import { RxNavBar } from '../nav-bar'
 
 export default {
   name: 'RxBoardMixin',
   components: {
-    RxRoutes
+    RxNavBar
   },
   data () {
     return {
