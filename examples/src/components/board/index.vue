@@ -1,6 +1,26 @@
 <script>
 import { RxBoardMixin } from '@robotx/packages'
-import nav from './nav'
+
+// 导航菜单
+const routes = [
+  {
+    title: 'Home',
+    name: 'homepage'
+  },
+  {
+    title: 'Products',
+    children: [
+      {
+        title: 'products',
+        name: 'products'
+      },
+      {
+        title: 'Categories',
+        name: 'productCategories'
+      }
+    ]
+  }
+]
 
 export default {
   mixins: [
@@ -8,7 +28,7 @@ export default {
   ],
   data () {
     return {
-      routes: nav
+      routes
     }
   }
 }
