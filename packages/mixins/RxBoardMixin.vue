@@ -4,7 +4,9 @@
       <rx-nav :routes="routes"/>
     </div>
     <div class="rx-layout-container">
-      <div class="rx-layout-header"></div>
+      <div class="rx-layout-header">
+        <rx-pages/>
+      </div>
       <div class="rx-layout-main">
         <router-view></router-view>
       </div>
@@ -15,11 +17,13 @@
 
 <script>
 import { RxNav } from '../nav'
+import { RxPages } from '../pages'
 
 export default {
   name: 'RxBoardMixin',
   components: {
-    RxNav
+    RxNav,
+    RxPages
   },
   data () {
     return {
