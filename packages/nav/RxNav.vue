@@ -1,12 +1,15 @@
 <template>
-  <div class="rx-nav-bar">
-    rx-nav-bar
+  <div class="rx-nav">
+    <h1>rx-nav-bar</h1>
+    <div class="rx-nav-items">
+
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'RxNavBar',
+  name: 'RxNav',
   props: {
     routes: {
       type: Array,
