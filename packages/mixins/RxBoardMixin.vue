@@ -8,7 +8,7 @@
         <rx-pages/>
       </div>
       <div class="rx-layout-main">
-        <router-view></router-view>
+        <rx-mainarea></rx-mainarea>
       </div>
       <div class="rx-layout-footer"></div>
     </div>
@@ -18,12 +18,14 @@
 <script>
 import { RxNav } from '../nav'
 import { RxPages } from '../pages'
+import RxMainarea from '../mainarea/RxMainarea'
 
 export default {
   name: 'RxBoardMixin',
   components: {
     RxNav,
-    RxPages
+    RxPages,
+    RxMainarea
   },
   data () {
     return {
