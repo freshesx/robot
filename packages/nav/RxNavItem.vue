@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { SessionRouter } from '../router'
+
 export default {
   name: 'rx-nav-item',
   props: {
@@ -27,7 +29,9 @@ export default {
   },
   methods: {
     push (item) {
-      if (item.name) this.$router.push({ name: item.name })
+      if (item.name) {
+        SessionRouter.push({ name: item.name })
+      }
     }
   }
 }
