@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { SessionRouter } from '../router'
+import SessionRouter from '../router/SessionRouter'
 
 export default {
   name: 'rx-nav-item',

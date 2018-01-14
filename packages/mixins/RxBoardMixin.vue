@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import { RxNav } from '../nav'
-import { RxPages } from '../pages'
+import RxNav from '../nav/RxNav'
+import RxPages from '../pages/RxPages'
 import RxMainarea from '../mainarea/RxMainarea'
 
 export default {
