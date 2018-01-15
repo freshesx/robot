@@ -1,28 +1,35 @@
 import Vue from 'vue'
+import store from '../../examples/src/store'
 
 let routes = []
 
-function findRoute (route, routeName) {
+function findRoute (routes, routeName) {
   let findedRoute
 
-  routes.some(route => {
-    if (route.name === routeName) {
-      findedRoute = route
-      return true
+  for (let index = 0; index < routes.length; index++) {
+    if ((routes[index].name) === routeName) {
+      findedRoute = routes[index]
     }
-    if (route.children) {
-      findedRoute = findRoute(route.children, routeName)
-      if (findedRoute) return true
+
+    if (routes[index].children && Array.isArray(routes[index].children)) {
+      const childRoute = findRoute(routes[index].children, routeName)
+      if (childRoute && typeof childRoute === 'object') {
+        findedRoute = childRoute
+      }
     }
-  })
+
+    if (findedRoute && typeof findedRoute === 'object') {
+      break
+    }
+  }
 
   return findedRoute
 }
 
 export default class SessionRouter {
   static push (routeConfig) {
-    const findedRoute = findRoute(routeConfig.name)
-    console.log(findedRoute)
+    const findedRoute = findRoute(routes, routeConfig.name)
+    store.dispatch('rxPushSessionTab', findedRoute)
   }
 
   static routes (newRoutes = []) {
