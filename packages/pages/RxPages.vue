@@ -6,6 +6,7 @@
       }"
       :key="key"
       v-for="(tab, key) in sessionTabs"
+      @click="switchActive(key)"
     >
       {{ tab.title }}
       <div class="rx-pages-btns">
@@ -45,6 +46,9 @@ export default {
         title,
         name: 'homepage'
       })
+    },
+    switchActive (key) {
+      this.$store.dispatch('rxSwitchActiveTabIndex', { index: key })
     }
   },
   created () {
