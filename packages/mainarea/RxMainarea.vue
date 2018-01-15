@@ -37,6 +37,7 @@ export default {
   },
   methods: {
     mountComponent () {
+      if (!this.activeTab.name) return
       // Find component
       const route = SessionRouter.find(this.activeTab.name)
       // Build component name
