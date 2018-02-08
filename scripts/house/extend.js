@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = runner => {
   runner.webpackBuilder.extend(webpack => {
     webpack.resolve.alias = {
-      '@robotx/packages': path.resolve('./packages')
+      '@freshes/robot': path.resolve('./dist/main.esm.js')
     }
     return webpack
   })
