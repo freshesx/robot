@@ -19,12 +19,7 @@ export default {
     }),
     eslint(),
     json(),
-    babel({
-      exclude: 'node_modules/**',
-      plugins: [
-        'external-helpers'
-      ]
-    })
+    babel()
   ],
   external: [
     'vue'
