@@ -1,6 +1,6 @@
 {
-  "name": "robotx",
-  "version": "2.0.0-alpha.0",
+  "name": "@freshes/robot",
+  "version": "0.1.0",
   "description": "Robotx is designed for dashboard. And it is vue-based implementation.",
   "author": "Wu Qicheng <chasel.wu@vitualreaty.com>",
   "license": "MIT",
