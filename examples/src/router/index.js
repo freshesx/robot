@@ -10,7 +10,7 @@ const router = new VueRouter({
       component: () => import('../components/dashboard/index.js'),
       children: [
         {
-          path: 'homepage',
+          path: '/',
           name: 'homepage',
           component: () => import('../components/homepage/index.js')
         }
