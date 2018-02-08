@@ -15,8 +15,9 @@ export default function mixComponents (config, mixins) {
     component.methods = { ...config.output }
   }
 
-  if (config && config.hooks) {
-    component = { ...component, ...config.hooks }
+  // @todo 检查 lifecycle 的钩子名称，仅允许部分 lifecycle 钩子
+  if (config && config.lifecycle) {
+    component = { ...component, ...config.lifecycle }
   }
 
   return component
