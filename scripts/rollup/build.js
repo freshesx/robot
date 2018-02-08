@@ -22,6 +22,7 @@ export default {
     babel()
   ],
   external: [
-    'vue'
+    'vue',
+    'element-ui'
   ]
 }
