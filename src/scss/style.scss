@@ -1,0 +1,28 @@
+.el-menu {
+  border-right: none !important;
+}
+
+// 鼠标经过时改为白色字体无背景
+.el-menu-item {
+  &:hover {
+    background: transparent !important;
+    color: #fff !important;
+  }
+}
+
+.el-submenu__title {
+  &:hover {
+    background-color: transparent !important;
+    color: #fff !important;
+  }
+}
+
+// 激活状态采用蓝色背景，白色字体
+.el-menu-item.is-active {
+  background-color: #188fff !important;
+}
+
+// 修改左缩进
+.el-submenu .el-menu-item {
+  padding-left: 54px !important;
+}

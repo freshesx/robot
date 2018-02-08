@@ -3,7 +3,7 @@
     <el-container>
       <el-aside class="rt-dashboard-mixin-aside" width="200px">
         <!-- 侧边栏元素 -->
-        <private-aside></private-aside>
+        <private-aside :menu="menu"></private-aside>
       </el-aside>
       <el-container>
         <el-header>Header</el-header>
@@ -17,10 +17,50 @@
 <script>
 import PrivateAside from './_aside.vue'
 
+let menuId = 1
+
 export default {
   name: 'RtDashboardMixin',
   components: {
     PrivateAside
+  },
+  computed: {
+    /**
+     * @public
+     */
+    menu () {
+      return [
+        {
+          id: this.menuNextId(),
+          title: '首页',
+          router: { name: 'homepage' },
+          icon: 'el-icon-menu'
+        },
+        {
+          id: this.menuNextId(),
+          title: '产品模块',
+          icon: 'el-icon-tickets',
+          children: [
+            {
+              id: this.menuNextId(),
+              title: '产品列表',
+              router: { name: 'products' }
+            }
+          ]
+        },
+        {
+          id: this.menuNextId(),
+          title: '用户模块',
+          router: { name: 'homepage' },
+          icon: 'el-icon-setting'
+        }
+      ]
+    }
+  },
+  methods: {
+    menuNextId () {
+      return menuId++
+    }
   }
 }
 </script>
