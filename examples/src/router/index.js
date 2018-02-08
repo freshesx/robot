@@ -7,12 +7,12 @@ const router = new VueRouter({
   routes: [
     {
       path: '/dashboard',
-      component: () => import('../components/dashboard/index.vue'),
+      component: () => import('../components/dashboard/index.js'),
       children: [
         {
           path: 'homepage',
           name: 'homepage',
-          component: () => import('../components/homepage/index.vue')
+          component: () => import('../components/homepage/index.js')
         }
       ]
     }
