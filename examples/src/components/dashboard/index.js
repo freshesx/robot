@@ -3,7 +3,7 @@ import { mixDashboard } from '@freshes/robot'
 export default mixDashboard({
   input: {
     structure () {
-      return 'hihi'
+      return 'hello, world'
     }
   },
   output: {
