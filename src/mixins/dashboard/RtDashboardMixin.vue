@@ -1,7 +1,7 @@
 <template>
   <div class="rt-dashboard-mixin">
     <el-container>
-      <el-aside class="rt-dashboard-mixin-aside" width="200px">
+      <el-aside class="rt-dashboard-mixin-aside" :width="asideWidth">
         <!-- 侧边栏元素 -->
         <private-aside :menu="menu" :collapse="menuCollapse"></private-aside>
       </el-aside>
@@ -59,7 +59,10 @@ export default {
       ]
     },
     menuCollapse () {
-      return true
+      return false
+    },
+    asideWidth () {
+      return this.menuCollapse ? '64px' : '200px'
     }
   },
   methods: {
