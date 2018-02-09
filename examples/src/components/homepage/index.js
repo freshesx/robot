@@ -1,9 +1,3 @@
-export default {
-  name: 'home',
-  render (h) {
-    return h(
-      'div',
-      'homepage'
-    )
-  }
-}
+import { mixJumbotron } from '@freshes/robot'
+
+export default mixJumbotron()
