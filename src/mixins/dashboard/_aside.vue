@@ -4,45 +4,27 @@
       ROBOT
     </div>
     <div class="rt-dashboard-aside-navbar">
-      <el-menu
-        default-active="1"
-        background-color="transparent"
-        text-color="#A6ADB4"
-        active-text-color="#fff"
-        unique-opened
-      >
-        <div
-          :key="item.id"
-          v-for="item in menu"
-        >
-          <el-menu-item :index="item.id.toString()" v-if="!item.children">
-            <i :class="item.icon"></i>
-            <span slot="title">{{ item.title }}</span>
-          </el-menu-item>
-          <el-submenu :index="item.id.toString()" v-if="item.children">
-            <template slot="title">
-              <i :class="item.icon"></i>
-              <span>{{ item.title }}</span>
-            </template>
-            <el-menu-item
-              :index="child.id.toString()"
-              :key="child.id"
-              v-for="child in item.children"
-            >{{ child.title }}</el-menu-item>
-          </el-submenu>
-        </div>
-      </el-menu>
+      <private-menu :menu="menu" :collapse="collapse" />
     </div>
   </div>
 </template>
 
 <script>
+import PrivateMenu from './_menu.js'
+
 export default {
   props: {
     menu: {
       type: Array,
       default: () => []
+    },
+    collapse: {
+      type: Boolean,
+      default: false
     }
+  },
+  components: {
+    PrivateMenu
   }
 }
 </script>

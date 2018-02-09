@@ -3,7 +3,7 @@
     <el-container>
       <el-aside class="rt-dashboard-mixin-aside" width="200px">
         <!-- 侧边栏元素 -->
-        <private-aside :menu="menu"></private-aside>
+        <private-aside :menu="menu" :collapse="menuCollapse"></private-aside>
       </el-aside>
       <el-container>
         <!-- <el-header>Header</el-header> -->
@@ -57,6 +57,9 @@ export default {
           icon: 'el-icon-setting'
         }
       ]
+    },
+    menuCollapse () {
+      return true
     }
   },
   methods: {
