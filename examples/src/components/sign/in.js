@@ -1,11 +1,3 @@
-import { mixSignIn, mixTextInput } from '@freshes/robot'
+import { mixSignIn } from '@freshes/robot'
 
-export default mixSignIn({
-  input: {
-    forms () {
-      return [
-        mixTextInput()
-      ]
-    }
-  }
-})
+export default mixSignIn()
