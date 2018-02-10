@@ -1,13 +1,9 @@
 import Vue from 'vue'
-import PrivateAside from './_aside.vue'
+import Menu from './_menu.js'
 
 export default {
   name: 'RtDashboardMixin',
-  components: {
-    PrivateAside
-  },
   render (h) {
-    const ElAside = Vue.component('ElAside')
     const ElContainer = Vue.component('ElContainer')
     const ElMain = Vue.component('ElMain')
     const RouterView = Vue.component('router-view')
@@ -15,16 +11,29 @@ export default {
     return (
       <div class='rt-dashboard-mixin'>
         <ElContainer>
-          <ElAside class='rt-dashboard-mixin-aside' width={this.asideWidth}>
-            {/* 侧边栏元素 */}
-            <private-aside menu={this.menu} collapse={this.menuCollapse} />
-          </ElAside>
+          {this.renderAside(h)}
           <ElMain>
             <RouterView />
           </ElMain>
         </ElContainer>
       </div>
     )
+  },
+  methods: {
+    renderAside (h) {
+      const ElAside = Vue.component('ElAside')
+
+      return (
+        <ElAside class='rt-dashboard-mixin-aside' width={this.asideWidth}>
+          <div class='rt-dashboard-aside-brand'>
+            ROBOT
+          </div>
+          <div class='rt-dashboard-aside-navbar'>
+            <Menu menu={this.menu} collapse={this.collapse} />
+          </div>
+        </ElAside>
+      )
+    }
   },
   computed: {
     /**
@@ -58,6 +67,9 @@ export default {
         }
       ]
     },
+    /**
+     * @public
+     */
     menuCollapse () {
       return false
     },
