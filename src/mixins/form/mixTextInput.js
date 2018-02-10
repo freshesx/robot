@@ -7,10 +7,21 @@ const TextInput = {
   name: 'RtTextInput',
   render (h) {
     return (
-      <ElFormItem label={'活动名称'}>
-        <ElInput value={'nihao'} />
+      <ElFormItem label={this.label}>
+        <ElInput value={this.value} placeholder={this.placeholder} />
       </ElFormItem>
     )
+  },
+  computed: {
+    label () {
+      return 'TextInput'
+    },
+    value () {
+      return undefined
+    },
+    placeholder () {
+      return 'Placeholder'
+    }
   }
 }
 
