@@ -1,6 +1,6 @@
 import mix from '../../helpers/mix.js'
 import {
-  FromItem as ElFormItem,
+  FormItem as ElFormItem,
   Input as ElInput } from 'element-ui'
 
 const TextInput = {
