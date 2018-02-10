@@ -2,8 +2,8 @@ import { mixDashboard } from '@freshes/robot'
 
 export default mixDashboard({
   input: {
-    structure () {
-      return 'hello, world'
+    menu () {
+      return this.$store.state.dashboard.menu
     }
   },
   output: {
@@ -12,7 +12,6 @@ export default mixDashboard({
   },
   lifecycle: {
     created () {
-      console.log(this.structure)
     }
   }
 })
