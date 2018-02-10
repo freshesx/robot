@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Menu from './_menu.js'
-import mixComponents from '../../helpers/mixComponent.js'
+import mix from '../../helpers/mix.js'
 import {
   Container as ElContainer,
   Main as ElMain,
@@ -96,4 +96,4 @@ const Dashboard = {
   }
 }
 
-export default config => mixComponents(config, Dashboard)
+export default config => mix(config, Dashboard)
