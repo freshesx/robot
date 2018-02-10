@@ -24,15 +24,26 @@ export default {
       const ElAside = Vue.component('ElAside')
 
       return (
-        <ElAside class='rt-dashboard-mixin__aside' width={this.asideWidth}>
+        <ElAside class='rt-dashboard-mixin__aside' width={this.asideWidth} style='transition: width 0.5s;'>
           <div class='rt-dashboard-mixin__brand'>
             ROBOT
           </div>
           <div class='rt-dashboard-mixin__menu'>
-            <Menu menu={this.menu} collapse={this.collapse} />
+            <Menu menu={this.menu} collapse={this.menuCollapse} />
+          </div>
+          <div class='rt-dashboard-mixin__collapse'>
+            <i class='el-icon-menu' onClick={this.toggleCollapse} />
           </div>
         </ElAside>
       )
+    },
+    toggleCollapse () {
+      this.menuCollapse = !this.menuCollapse
+    }
+  },
+  data () {
+    return {
+      collapseData: false
     }
   },
   computed: {
@@ -70,8 +81,13 @@ export default {
     /**
      * @public
      */
-    menuCollapse () {
-      return false
+    menuCollapse: {
+      get () {
+        return this.collapseData
+      },
+      set (value) {
+        this.collapseData = value
+      }
     },
     asideWidth () {
       return this.menuCollapse ? '64px' : '200px'
