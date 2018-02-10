@@ -1,4 +1,4 @@
-export default function mixComponents (config, mixins) {
+export default function (config, mixins) {
   if (!Array.isArray(mixins)) {
     mixins = [ mixins ]
   }
