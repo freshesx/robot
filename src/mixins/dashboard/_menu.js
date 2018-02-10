@@ -12,11 +12,6 @@ export default {
       default: false
     }
   },
-  data () {
-    return {
-      data: 'nihao2'
-    }
-  },
   render (h) {
     const ElMenu = Vue.component('ElMenu')
 
