@@ -1,0 +1,11 @@
+.rt-dashboard-mixin {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: #f0f2f5;
+}
+
+.rt-dashboard-mixin-aside {
+  display: flex;
+  flex-direction: column;
+}
