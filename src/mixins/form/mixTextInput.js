@@ -1,16 +1,11 @@
-import Vue from 'vue'
-import mixComponents from '../../helpers/mixComponent.js'
-
-export default function (config) {
-  return mixComponents(config, TextInput)
-}
+import mix from '../../helpers/mix.js'
+import {
+  FromItem as ElFormItem,
+  Input as ElInput } from 'element-ui'
 
 const TextInput = {
-  name: 'RtTextInputMixin',
+  name: 'RtTextInput',
   render (h) {
-    const ElFormItem = Vue.component('ElFormItem')
-    const ElInput = Vue.component('ElInput')
-
     return (
       <ElFormItem label={'活动名称'}>
         <ElInput value={'nihao'} />
@@ -18,3 +13,5 @@ const TextInput = {
     )
   }
 }
+
+export default config => mix(config, TextInput)

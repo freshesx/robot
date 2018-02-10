@@ -1,6 +1,9 @@
-import mixComponents from '../../helpers/mixComponent.js'
-import RtJumbotronMixin from './RtJumbotronMixin.vue'
+import mix from '../../helpers/mix.js'
 
-export default function (config) {
-  return mixComponents(config, RtJumbotronMixin)
+const Jumbotron = {
+  render (h) {
+    return (<div>Hi, nihao!</div>)
+  }
 }
+
+export default config => mix(config, Jumbotron)
