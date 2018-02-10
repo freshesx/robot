@@ -1,4 +1,7 @@
-import Vue from 'vue'
+import {
+  Menu as ElMenu,
+  MenuItem as ElMenuItem,
+  Submenu as ElSubmenu } from 'element-ui'
 
 export default {
   name: 'RtDashboardMenu',
@@ -13,8 +16,6 @@ export default {
     }
   },
   render (h) {
-    const ElMenu = Vue.component('ElMenu')
-
     return (
       <ElMenu
         defaultActive='1'
@@ -36,8 +37,6 @@ export default {
   },
   methods: {
     renderItem (h, item) {
-      const ElMenuItem = Vue.component('ElMenuItem')
-
       return (
         <ElMenuItem index={item.id.toString()}>
           <i class={{ [item.icon]: true }} />
@@ -46,8 +45,6 @@ export default {
       )
     },
     renderSubmenu (h, item) {
-      const ElSubmenu = Vue.component('ElSubmenu')
-
       return (
         <ElSubmenu index={item.id.toString()}>
           <template slot='title'>
