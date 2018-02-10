@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Menu from './_menu.js'
 import mixComponents from '../../helpers/mixComponent.js'
+import {
+  Container as ElContainer,
+  Main as ElMain,
+  Aside as ElAside } from 'element-ui'
 
 const Dashboard = {
   name: 'RtDashboard',
   render (h) {
-    const ElContainer = Vue.component('ElContainer')
-    const ElMain = Vue.component('ElMain')
     const RouterView = Vue.component('router-view')
 
     return (
@@ -22,8 +24,6 @@ const Dashboard = {
   },
   methods: {
     renderAside (h) {
-      const ElAside = Vue.component('ElAside')
-
       return (
         <ElAside class='rt-dashboard-mixin__aside' width={this.asideWidth} style='transition: width 0.5s;'>
           <div class='rt-dashboard-mixin__brand'>
