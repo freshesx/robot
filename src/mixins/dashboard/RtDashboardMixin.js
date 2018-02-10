@@ -24,11 +24,11 @@ export default {
       const ElAside = Vue.component('ElAside')
 
       return (
-        <ElAside class='rt-dashboard-mixin-aside' width={this.asideWidth}>
-          <div class='rt-dashboard-aside-brand'>
+        <ElAside class='rt-dashboard-mixin__aside' width={this.asideWidth}>
+          <div class='rt-dashboard-mixin__brand'>
             ROBOT
           </div>
-          <div class='rt-dashboard-aside-navbar'>
+          <div class='rt-dashboard-mixin__menu'>
             <Menu menu={this.menu} collapse={this.collapse} />
           </div>
         </ElAside>
