@@ -10,7 +10,7 @@ import {
   Checkbox } from 'element-ui'
 
 const Username = mixTextInput({
-  input: {
+  computed: {
     label () {
       return '用户名'
     },
@@ -52,7 +52,7 @@ const SignIn = {
             </div>
             <Form>
               {(
-                this.forms.map(field => h(field))
+                this.fields.map(field => h(field))
               )}
               <FormItem>
                 <Row type='flex' justify='space-between'>
@@ -81,7 +81,7 @@ const SignIn = {
     )
   },
   computed: {
-    forms () {
+    fields () {
       return [
         Username,
         Password

@@ -7,12 +7,12 @@ export default function (config, mixins) {
     mixins: [].concat(mixins)
   }
 
-  if (config && config.input) {
-    component.computed = { ...config.input }
+  if (config && config.computed) {
+    component.computed = { ...config.computed }
   }
 
-  if (config && config.output) {
-    component.methods = { ...config.output }
+  if (config && config.methods) {
+    component.methods = { ...config.methods }
   }
 
   // @todo 检查 lifecycle 的钩子名称，仅允许部分 lifecycle 钩子

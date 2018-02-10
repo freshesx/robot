@@ -1,12 +1,12 @@
 import { mixDashboard } from '@freshes/robot'
 
 export default mixDashboard({
-  input: {
+  computed: {
     menu () {
       return this.$store.state.dashboard.menu
     }
   },
-  output: {
+  methods: {
     update () {
     }
   },
