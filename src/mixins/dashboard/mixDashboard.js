@@ -12,7 +12,7 @@ const Dashboard = {
     const RouterView = Vue.component('router-view')
 
     return (
-      <div class='rt-dashboard-mixin'>
+      <div class='rt-dashboard'>
         <ElContainer>
           {this.renderAside(h)}
           <ElMain>
@@ -25,14 +25,14 @@ const Dashboard = {
   methods: {
     renderAside (h) {
       return (
-        <ElAside class='rt-dashboard-mixin__aside' width={this.asideWidth} style='transition: width 0.5s;'>
-          <div class='rt-dashboard-mixin__brand'>
+        <ElAside class='rt-dashboard__aside' width={this.asideWidth} style='transition: width 0.5s;'>
+          <div class='rt-dashboard__brand'>
             ROBOT
           </div>
-          <div class='rt-dashboard-mixin__menu'>
+          <div class='rt-dashboard__menu'>
             <Menu menu={this.menu} collapse={this.menuCollapse} />
           </div>
-          <div class='rt-dashboard-mixin__collapse'>
+          <div class='rt-dashboard__collapse'>
             <i class='el-icon-menu' onClick={this.toggleCollapse} />
           </div>
         </ElAside>
