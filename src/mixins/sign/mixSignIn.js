@@ -6,28 +6,15 @@ const SignIn = {
   render (h) {
     return (
       <ElForm>
-        {/* {(
-          this.forms.map(field => this.parseField(h, field))
-        )} */}
-        hihihihihi
-        {this.forms.map(field => field)}
+        {(
+          this.forms.map(field => h(field))
+        )}
       </ElForm>
     )
   },
-  methods: {
-    parseField (h, field) {
-      return h(field)
-    }
-  },
   computed: {
     forms () {
-      return [
-        {
-          render (h) {
-            h('div', 'nihao')
-          }
-        }
-      ]
+      return []
     }
   }
 }
