@@ -14,6 +14,16 @@ export default class Robot {
     this.modules = modules
   }
 
+  renderApp (Vue) {
+    const RouterView = Vue.component('router-view')
+
+    return {
+      render (h) {
+        return <RouterView />
+      }
+    }
+  }
+
   install (Vue, Options) {
     Vue.use(ElementUI)
   }
@@ -65,7 +75,7 @@ export default class Robot {
       el: '#app',
       store,
       router,
-      render: h => h(App)
+      render: h => h(App || this.renderApp(Vue))
     })
   }
 }
