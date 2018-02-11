@@ -5,7 +5,7 @@ import products from '../products/router.js'
 export default [
   {
     path: '/dashboard',
-    component: () => import('./index.js'),
+    component: () => import('./list.js'),
     children: [
       ...homepage,
       ...products

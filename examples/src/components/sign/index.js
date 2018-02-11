@@ -1,4 +1,6 @@
-export default [
+import { Module } from '@freshes/robot'
+
+const routes = [
   {
     path: '/sign/in',
     name: 'sign.in',
@@ -10,3 +12,7 @@ export default [
   //   component: () => import('./up.js')
   // }
 ]
+
+export default new Module({
+  routes
+})

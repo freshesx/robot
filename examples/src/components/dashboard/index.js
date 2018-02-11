@@ -1,17 +1,25 @@
-import { mixDashboard } from '@freshes/robot'
+import { Module } from '@freshes/robot'
+import homepage from '../homepage/router.js'
+import products from '../products/router.js'
+import menu from './menu.js'
 
-export default mixDashboard({
-  computed: {
-    menu () {
-      return this.$store.state.dashboard.menu
+export default new Module({
+  state: {
+    menu
+  },
+  commits: {
+    setMenu (state, props) {
+      state.menu = { ...state.menu, ...props }
     }
   },
-  methods: {
-    update () {
+  routes: [
+    {
+      path: '/dashboard',
+      component: () => import('./list.js'),
+      children: [
+        ...homepage,
+        ...products
+      ]
     }
-  },
-  lifecycle: {
-    created () {
-    }
-  }
+  ]
 })
