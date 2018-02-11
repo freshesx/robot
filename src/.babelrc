@@ -19,7 +19,9 @@
         }
       }
     ],
-    "stage-2"
+    "es2015-rollup",
+    "stage-2",
+    "flow"
   ],
   "plugins": [
     "transform-vue-jsx"
