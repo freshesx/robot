@@ -39,12 +39,7 @@ const Dashboard = {
       )
     },
     toggleCollapse () {
-      this.menuCollapse = !this.menuCollapse
-    }
-  },
-  data () {
-    return {
-      collapseData: false
+      this.$store.commit('$robotSetMenuCollapse')
     }
   },
   computed: {
@@ -82,13 +77,8 @@ const Dashboard = {
     /**
      * @public
      */
-    menuCollapse: {
-      get () {
-        return this.collapseData
-      },
-      set (value) {
-        this.collapseData = value
-      }
+    menuCollapse () {
+      return this.$store.state.$robot.menuCollapse
     },
     asideWidth () {
       return this.menuCollapse ? '64px' : '200px'
