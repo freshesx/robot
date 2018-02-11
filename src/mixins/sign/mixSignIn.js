@@ -11,16 +11,31 @@ import {
 
 const Username = mixTextInput({
   computed: {
-    label () {
-      return '用户名'
-    },
-    placeholder () {
-      return '点击输入用户名登录账号'
+    label: () => '用户名',
+    placeholder: () => '点击输入用户名登录账号',
+    value () {
+      return this.$store.state.$robot.signIn.username
+    }
+  },
+  methods: {
+    onInput (value) {
+      this.$store.commit('$robotSetSignIn', { username: value })
     }
   }
 })
 
-const Password = mixPasswordInput()
+const Password = mixPasswordInput({
+  computed: {
+    value () {
+      return this.$store.state.$robot.signIn.password
+    }
+  },
+  methods: {
+    onInput (value) {
+      this.$store.commit('$robotSetSignIn', { password: value })
+    }
+  }
+})
 
 const SignIn = {
   name: 'RtSignIn',

@@ -1,5 +1,9 @@
 const state = {
-  menuCollapse: false
+  menuCollapse: false,
+  signIn: {
+    username: undefined,
+    password: undefined
+  }
 }
 
 const mutations = {
@@ -8,6 +12,9 @@ const mutations = {
       value = !state.menuCollapse
     }
     state.menuCollapse = value
+  },
+  $robotSetSignIn (state, props) {
+    state.signIn = { ...state.signIn, ...props }
   }
 }
 
