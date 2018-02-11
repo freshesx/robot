@@ -86,4 +86,4 @@ const Dashboard = {
   }
 }
 
-export default config => mix(Dashboard, mix)
+export default config => mix(Dashboard, config)
