@@ -8,7 +8,12 @@ const TextInput = {
   render (h) {
     return (
       <ElFormItem label={this.label}>
-        <ElInput type='password' value={this.value} placeholder={this.placeholder} />
+        <ElInput
+          type='password'
+          value={this.value}
+          placeholder={this.placeholder}
+          onInput={this.onInput}
+        />
       </ElFormItem>
     )
   },
@@ -21,6 +26,11 @@ const TextInput = {
     },
     placeholder () {
       return '点击输入密码'
+    }
+  },
+  methods: {
+    onInput (value) {
+      return value
     }
   }
 }

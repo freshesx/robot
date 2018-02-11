@@ -8,7 +8,11 @@ const TextInput = {
   render (h) {
     return (
       <ElFormItem label={this.label}>
-        <ElInput value={this.value} placeholder={this.placeholder} />
+        <ElInput
+          value={this.value}
+          placeholder={this.placeholder}
+          onInput={this.onInput}
+        />
       </ElFormItem>
     )
   },
@@ -21,6 +25,11 @@ const TextInput = {
     },
     placeholder () {
       return 'Placeholder'
+    }
+  },
+  methods: {
+    onInput (value) {
+      return value
     }
   }
 }
