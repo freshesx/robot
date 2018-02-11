@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import { Robot } from '@freshes/robot'
-import app from './app'
 // --
 import dashboard from './components/dashboard'
 import sign from './components/sign'
@@ -15,4 +14,4 @@ const robot = new Robot({
   sign
 })
 
-robot.render(Vue, app)
+robot.render(Vue)
