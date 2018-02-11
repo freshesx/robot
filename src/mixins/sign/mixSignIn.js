@@ -95,4 +95,4 @@ const SignIn = {
   }
 }
 
-export default config => mix(config, SignIn)
+export default config => mix(SignIn, config)

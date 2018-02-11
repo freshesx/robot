@@ -25,4 +25,4 @@ const TextInput = {
   }
 }
 
-export default config => mix(config, TextInput)
+export default config => mix(TextInput, config)

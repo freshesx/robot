@@ -6,4 +6,4 @@ const Jumbotron = {
   }
 }
 
-export default config => mix(config, Jumbotron)
+export default config => mix(Jumbotron, config)
