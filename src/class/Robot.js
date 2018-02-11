@@ -2,6 +2,7 @@
 
 import type { ModuleInterface } from './ModuleInterface.js'
 import mapRobotStore from '../helpers/mapRobotStore.js'
+import Vue from 'vue'
 import ElementUI from 'element-ui'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
@@ -12,10 +13,11 @@ import '../mixins/dashboard/main.scss'
 export default class Robot {
   constructor (modules: { [string]: ModuleInterface }) {
     this.modules = modules
+    this.Vue = Vue
   }
 
-  renderApp (Vue) {
-    const RouterView = Vue.component('router-view')
+  renderApp () {
+    const RouterView = this.Vue.component('router-view')
 
     return {
       render (h) {
@@ -24,13 +26,9 @@ export default class Robot {
     }
   }
 
-  install (Vue, Options) {
-    Vue.use(ElementUI)
-  }
-
-  render (Vue, App) {
-    const storeModules = {}
-    // const routerModules = []
+  parseModules () {
+    let storeModules = {}
+    let routeModules = []
 
     for (const name in this.modules) {
       if (this.modules.hasOwnProperty(name)) {
@@ -38,44 +36,47 @@ export default class Robot {
           state: this.modules[name].state,
           mutations: this.modules[name].commits
         }
+        routeModules = [
+          ...routeModules,
+          ...this.modules[name].routes
+        ]
       }
     }
 
-    let storeRouters = []
-
-    for (const name in this.modules) {
-      if (this.modules.hasOwnProperty(name)) {
-        console.log(this.modules[name])
-        storeRouters = storeRouters.concat(this.modules[name].routes)
-      }
+    return {
+      storeModules,
+      routeModules
     }
+  }
 
-    // install robot
-    Vue.use(this)
+  render ({ strict }) {
+    this.Vue.config.productionTip = strict
 
-    Vue.use(Vuex)
+    this.Vue.use(ElementUI)
+    this.Vue.use(Vuex)
+    this.Vue.use(VueRouter)
+
+    const { storeModules, routeModules } = this.parseModules()
 
     const store = new Vuex.Store({
-      // strict: process.env.NODE_ENV !== 'production',
+      strict,
       modules: {
         ...storeModules,
         ...mapRobotStore()
       }
     })
 
-    Vue.use(VueRouter)
-
     const router = new VueRouter({
       routes: [
-        ...storeRouters
+        ...routeModules
       ]
     })
 
-    new Vue({
+    new this.Vue({
       el: '#app',
       store,
       router,
-      render: h => h(App || this.renderApp(Vue))
+      render: h => h(this.renderApp())
     })
   }
 }
