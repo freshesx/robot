@@ -23,6 +23,8 @@ export default {
   ],
   external: [
     'vue',
-    'element-ui'
+    'element-ui',
+    'vuex',
+    'vue-router'
   ]
 }
