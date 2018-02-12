@@ -24,7 +24,7 @@ const routes = [
   }
 ]
 
-export default new Bundle({
+export default new Bundle('dashboard', {
   routes,
   state,
   mutations

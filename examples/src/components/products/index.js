@@ -24,7 +24,7 @@ export const routes = [
   }
 ]
 
-export default new Bundle({
+export default new Bundle('products', {
   state,
   mutations
 })

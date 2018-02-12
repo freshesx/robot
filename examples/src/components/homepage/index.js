@@ -8,4 +8,4 @@ export const routes = [
   }
 ]
 
-export default new Bundle()
+export default new Bundle('homepage')
