@@ -7,7 +7,7 @@ export default class Bundle implements BundleInterface {
     state: Object | void,
     commits: Object | void,
     routes: Array<mixed> | void
-  }) {
+  } = {}) {
     this.state = params.state || {}
     this.commits = params.commits || {}
     this.routes = params.routes || []
