@@ -5,5 +5,6 @@ export interface RtModuleInterface {
   commits: {
     [string]: Function
   },
-  routes: Array<RouteInterface>
+  routes: Array<RouteInterface>,
+  constructor (name: string, params: mixed): void
 }
