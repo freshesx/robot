@@ -1,10 +1,12 @@
 import Vue from 'vue'
-import Menu from './_menu.js'
 import mix from '../../helpers/mix.js'
 import {
   Container as ElContainer,
   Main as ElMain,
-  Aside as ElAside } from 'element-ui'
+  Aside as ElAside,
+  Menu as ElMenu,
+  MenuItem as ElMenuItem,
+  Submenu as ElSubmenu } from 'element-ui'
 
 const Dashboard = {
   name: 'RtDashboard',
@@ -30,12 +32,55 @@ const Dashboard = {
             ROBOT
           </div>
           <div class='rt-dashboard__menu'>
-            <Menu menu={this.menu} collapse={this.menuCollapse} />
+            {this.renderMenu(h)}
           </div>
           <div class='rt-dashboard__collapse'>
             <i class='el-icon-menu' onClick={this.toggleCollapse} />
           </div>
         </ElAside>
+      )
+    },
+    renderMenu (h) {
+      return (
+        <ElMenu
+          defaultActive='1'
+          backgroundColor='#001529'
+          textColor='#A6ADB4'
+          activeTextColor='#fff'
+          collapse={this.collapse}
+          uniqueOpened
+        >
+          {(
+            this.menu.map(item => {
+              return item.children
+                ? this.renderSubmenu(h, item)
+                : this.renderItem(h, item)
+            })
+          )}
+        </ElMenu>
+      )
+    },
+    renderItem (h, item) {
+      return (
+        <ElMenuItem index={item.id.toString()}>
+          <i class={{ [item.icon]: true }} />
+          <span slot='title'>{item.title}</span>
+        </ElMenuItem>
+      )
+    },
+    renderSubmenu (h, item) {
+      return (
+        <ElSubmenu index={item.id.toString()}>
+          <template slot='title'>
+            <i class={{ [item.icon]: true }} />
+            <span slot='title'>{item.title}</span>
+          </template>
+          {(
+            item.children.map(child => {
+              return this.renderItem(h, child)
+            })
+          )}
+        </ElSubmenu>
       )
     },
     toggleCollapse () {
