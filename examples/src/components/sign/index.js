@@ -1,4 +1,4 @@
-import { Module } from '@freshes/robot'
+import { Bundle } from '@freshes/robot'
 
 const routes = [
   {
@@ -13,6 +13,6 @@ const routes = [
   // }
 ]
 
-export default new Module({
+export default new Bundle({
   routes
 })
