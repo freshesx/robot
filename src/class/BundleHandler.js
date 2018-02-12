@@ -18,7 +18,7 @@ export default class BundleHander implements BundleHandlerInterface {
 
       const bundle = bundles[name]
 
-      bundleNames.push(name)
+      bundleNames.push(bundle.name)
 
       storeMaps[name] = {
         state: bundle.state,
