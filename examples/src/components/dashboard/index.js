@@ -1,6 +1,6 @@
 import { Bundle } from '@freshes/robot'
-import homepage from '../homepage/router.js'
-import products from '../products/router.js'
+import { routes as homepage } from '../homepage'
+import { routes as products } from '../products'
 import menu from './menu.js'
 
 const state = {
