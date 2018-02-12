@@ -6,7 +6,8 @@ import {
   Aside,
   Menu,
   MenuItem,
-  Submenu } from 'element-ui'
+  Submenu
+} from 'element-ui'
 
 const Dashboard = {
   name: 'RtDashboard',
@@ -62,7 +63,7 @@ const Dashboard = {
     },
     renderItem (h, item) {
       return (
-        <MenuItem index={item.id.toString()}>
+        <MenuItem index={item.id.toString()} onClick={this.clickMenuItem}>
           <i class={{ [item.icon]: true }} />
           <span slot='title'>{item.title}</span>
         </MenuItem>
@@ -85,6 +86,12 @@ const Dashboard = {
     },
     toggleCollapse () {
       this.$store.commit('$robotSetMenuCollapse')
+    },
+    /**
+     * @public
+     * @param {VueEvent} event
+     */
+    clickMenuItem (event) {
     }
   },
   computed: {
