@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import mix from '../../helpers/mix.js'
 import {
-  Container as ElContainer,
-  Main as ElMain,
-  Aside as ElAside,
-  Menu as ElMenu,
-  MenuItem as ElMenuItem,
-  Submenu as ElSubmenu } from 'element-ui'
+  Container,
+  Main,
+  Aside,
+  Menu,
+  MenuItem,
+  Submenu } from 'element-ui'
 
 const Dashboard = {
   name: 'RtDashboard',
@@ -15,19 +15,19 @@ const Dashboard = {
 
     return (
       <div class='rt-dashboard'>
-        <ElContainer>
+        <Container>
           {this.renderAside(h)}
-          <ElMain>
+          <Main>
             <RouterView />
-          </ElMain>
-        </ElContainer>
+          </Main>
+        </Container>
       </div>
     )
   },
   methods: {
     renderAside (h) {
       return (
-        <ElAside class='rt-dashboard__aside' width={this.asideWidth} style='transition: width 0.5s;'>
+        <Aside class='rt-dashboard__aside' width={this.asideWidth} style='transition: width 0.5s;'>
           <div class='rt-dashboard__brand'>
             ROBOT
           </div>
@@ -37,12 +37,12 @@ const Dashboard = {
           <div class='rt-dashboard__collapse'>
             <i class='el-icon-menu' onClick={this.toggleCollapse} />
           </div>
-        </ElAside>
+        </Aside>
       )
     },
     renderMenu (h) {
       return (
-        <ElMenu
+        <Menu
           defaultActive='1'
           backgroundColor='#001529'
           textColor='#A6ADB4'
@@ -57,20 +57,20 @@ const Dashboard = {
                 : this.renderItem(h, item)
             })
           )}
-        </ElMenu>
+        </Menu>
       )
     },
     renderItem (h, item) {
       return (
-        <ElMenuItem index={item.id.toString()}>
+        <MenuItem index={item.id.toString()}>
           <i class={{ [item.icon]: true }} />
           <span slot='title'>{item.title}</span>
-        </ElMenuItem>
+        </MenuItem>
       )
     },
     renderSubmenu (h, item) {
       return (
-        <ElSubmenu index={item.id.toString()}>
+        <Submenu index={item.id.toString()}>
           <template slot='title'>
             <i class={{ [item.icon]: true }} />
             <span slot='title'>{item.title}</span>
@@ -80,7 +80,7 @@ const Dashboard = {
               return this.renderItem(h, child)
             })
           )}
-        </ElSubmenu>
+        </Submenu>
       )
     },
     toggleCollapse () {
