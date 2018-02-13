@@ -1,7 +1,6 @@
 // @flow
 
 import type { ModuleInterface, BundleHandlerInterface } from './ModuleInterface.js'
-import BundleHandler from './BundleHandler.js'
 import mapRobotStore from '../helpers/mapRobotStore.js'
 import Vue from 'vue'
 import ElementUI from 'element-ui'
@@ -15,11 +14,7 @@ export default class Robot {
   bundleHandler: BundleHandlerInterface
 
   constructor (bundles: { [string]: ModuleInterface }) {
-    // this.modules = modules
     this.Vue = Vue
-
-    // 计算 modules，放入 bundleHandler 处理
-    this.bundleHandler = new BundleHandler(bundles)
   }
 
   renderApp () {
@@ -32,7 +27,7 @@ export default class Robot {
     }
   }
 
-  render ({ strict }) {
+  render ({ routes, strict }) {
     this.Vue.config.productionTip = strict
 
     this.Vue.use(ElementUI)
@@ -42,14 +37,13 @@ export default class Robot {
     const store = new Vuex.Store({
       strict,
       modules: {
-        ...this.bundleHandler.storeMaps,
         ...mapRobotStore()
       }
     })
 
     const router = new VueRouter({
       routes: [
-        ...this.bundleHandler.routeModules
+        ...routes
       ]
     })
 
