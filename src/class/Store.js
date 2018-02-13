@@ -1,30 +1,35 @@
-interface StateInterface {
-  [key: string]: mixed
-}
+// @flow
 
-interface MutationsInterface {
-  [key: string]: Function
-}
+export default class Store {
+  prefix: string
+  state: { [key: string]: mixed }
+  mutations: { [key: string]: Function }
 
-export interface StoreInterface {
-  state: StateInterface,
-  mutations: MutationsInterface,
-  constructor(prefix: string, { state: ?StateInterface, mutations: ?MutationsInterface }): void,
-  serialize(): {
-    [key: name]: {
-      state: StateInterface,
-      mutations: MutationsInterface
-    }
-  }
-}
-
-export default class Store implements StoreInterface {
   constructor (prefix, { state, mutations } = {}) {
+    if (!prefix) {
+      throw new Error('You does not define prefix name.')
+    }
+
     this.prefix = prefix
     this.state = state || {}
     this.mutations = mutations || {}
   }
 
   serialize () {
+    const mutations = {}
+
+    for (const key in this.mutations) {
+      if (this.mutations.hasOwnProperty(key)) {
+        const mutation = this.mutations[key]
+        mutations[`dashboard.${key}`] = mutation
+      }
+    }
+
+    return {
+      [this.prefix]: {
+        state: this.state,
+        mutations
+      }
+    }
   }
 }
