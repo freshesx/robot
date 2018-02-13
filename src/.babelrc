@@ -23,7 +23,8 @@
     "flow"
   ],
   "plugins": [
-    "transform-vue-jsx"
+    "transform-vue-jsx",
+    "transform-decorators-legacy"
   ],
   "env": {
     "test": {
