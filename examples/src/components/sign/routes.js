@@ -1,6 +1,4 @@
-import { Bundle } from '@freshes/robot'
-
-const routes = [
+export default [
   {
     path: '/sign/in',
     name: 'sign.in',
@@ -12,7 +10,3 @@ const routes = [
   //   component: () => import('./up.js')
   // }
 ]
-
-export default new Bundle('sign', {
-  routes
-})
