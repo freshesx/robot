@@ -29,6 +29,8 @@ export default {
     'vue',
     'element-ui',
     'vuex',
-    'vue-router'
+    'vue-router',
+    'mobx',
+    'vue-mobx'
   ]
 }
