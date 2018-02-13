@@ -1,11 +1,11 @@
 // @flow
 
 import type { ModuleInterface, BundleHandlerInterface } from './ModuleInterface.js'
-import mapRobotStore from '../helpers/mapRobotStore.js'
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+import { observable, isObservable, toJS } from 'mobx'
+import VueMobx from 'vue-mobx'
 import '../scss/reset.css'
 import '../scss/style.scss'
 import '../mixins/dashboard/main.scss'
@@ -31,14 +31,12 @@ export default class Robot {
     this.Vue.config.productionTip = strict
 
     this.Vue.use(ElementUI)
-    this.Vue.use(Vuex)
     this.Vue.use(VueRouter)
 
-    const store = new Vuex.Store({
-      strict,
-      modules: {
-        ...mapRobotStore()
-      }
+    this.Vue.use(VueMobx, {
+      toJS: toJS,
+      isObservable: isObservable,
+      observable: observable
     })
 
     const router = new VueRouter({
@@ -49,7 +47,6 @@ export default class Robot {
 
     new this.Vue({
       el: '#app',
-      store,
       router,
       render: h => h(this.renderApp())
     })
