@@ -85,7 +85,7 @@ const Dashboard = {
       )
     },
     toggleCollapse () {
-      // this.$store.commit('$robotSetMenuCollapse')
+      this.setState('$robot.menuCollapse', !this.getState('$robot.menuCollapse'))
     },
     /**
      * @public
