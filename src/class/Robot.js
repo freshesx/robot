@@ -3,11 +3,11 @@
 import Vuex from 'vuex'
 import ElementUI from 'element-ui'
 import VueRouter from 'vue-router'
+import get from 'lodash/get'
+import mapRobotStore from '../helpers/mapRobotStore.js'
 import '../scss/reset.css'
 import '../scss/style.scss'
 import '../mixins/dashboard/main.scss'
-import mapRobotStore from '../helpers/mapRobotStore.js'
-import get from 'lodash/get'
 
 export default class Robot {
   constructor ({ modules, strict }) {
@@ -19,8 +19,7 @@ export default class Robot {
     this.Vue = Vue
     this.Vue.config.productionTip = this.strict
 
-    this.Vue.use(ElementUI)
-
+    this.buildUiComponents()
     const store = this.buildStore()
     const router = this.buildRouter()
     this.buildHelpers()
@@ -31,6 +30,10 @@ export default class Robot {
       router,
       render: h => h(this.renderApp())
     })
+  }
+
+  buildUiComponents () {
+    this.Vue.use(ElementUI)
   }
 
   buildRouter () {
@@ -90,7 +93,7 @@ export default class Robot {
 
     return newModules
   }
-  
+
   parseMutations (states, prefix) {
     let newMutations = {}
 
