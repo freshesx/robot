@@ -55,18 +55,53 @@ export default class Robot {
   buildStore () {
     this.Vue.use(Vuex)
 
+    const robotModule = this.parseState(mapRobotStore())
+
     return new Vuex.Store({
       modules: {
-        ...mapRobotStore()
+        ...robotModule
       },
       strict: this.strict
     })
   }
 
   buildHelpers () {
-    this.Vue.prototype.getState = function (name, defaultValue) {
+    this.Vue.prototype.$r = this.Vue.prototype.getState = function (name, defaultValue) {
       return get(this.$store.state, name, defaultValue)
     }
+
+    this.Vue.prototype.$w = this.Vue.prototype.setState = function (name, newValue) {
+      console.log('hihihihihi')
+      return this.$store.commit(name, newValue)
+    }
+  }
+
+  parseState (modules) {
+    let newModules = {}
+
+    Object.keys(modules).forEach(name => {
+      const m = modules[name]
+      const o = {
+        state: m.state,
+        mutations: this.parseMutations(m.state, name)
+      }
+      newModules = { ...newModules, ...{ [name]: o } }
+    })
+
+    return newModules
+  }
+  
+  parseMutations (states, prefix) {
+    let newMutations = {}
+
+    Object.keys(states).forEach(name => {
+      const fn = function (state, props) {
+        state[name] = props
+      }
+      newMutations = { ...newMutations, ...{ [`${prefix}.${name}`]: fn } }
+    })
+
+    return newMutations
   }
 
   renderApp () {
