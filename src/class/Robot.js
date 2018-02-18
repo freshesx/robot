@@ -1,20 +1,72 @@
 // @flow
 
-import type { ModuleInterface, BundleHandlerInterface } from './ModuleInterface.js'
-import Vue from 'vue'
+import Vuex from 'vuex'
 import ElementUI from 'element-ui'
 import VueRouter from 'vue-router'
-import { observable, isObservable, toJS } from 'mobx'
-import VueMobx from 'vue-mobx'
 import '../scss/reset.css'
 import '../scss/style.scss'
 import '../mixins/dashboard/main.scss'
+import mapRobotStore from '../helpers/mapRobotStore.js'
+import get from 'lodash/get'
 
 export default class Robot {
-  bundleHandler: BundleHandlerInterface
+  constructor ({ modules, strict }) {
+    this.modules = modules
+    this.strict = strict
+  }
 
-  constructor (bundles: { [string]: ModuleInterface }) {
+  install (Vue) {
     this.Vue = Vue
+    this.Vue.config.productionTip = this.strict
+
+    this.Vue.use(ElementUI)
+
+    const store = this.buildStore()
+    const router = this.buildRouter()
+    this.buildHelpers()
+
+    new this.Vue({
+      el: '#app',
+      store,
+      router,
+      render: h => h(this.renderApp())
+    })
+  }
+
+  buildRouter () {
+    this.Vue.use(VueRouter)
+
+    let routes = []
+
+    for (const name in this.modules) {
+      if (this.modules.hasOwnProperty(name)) {
+        const m = this.modules[name]
+        routes = [ ...routes, ...m.routes ]
+      }
+    }
+
+    return new VueRouter({
+      routes: [
+        ...routes
+      ]
+    })
+  }
+
+  buildStore () {
+    this.Vue.use(Vuex)
+
+    return new Vuex.Store({
+      modules: {
+        ...mapRobotStore()
+      },
+      strict: this.strict
+    })
+  }
+
+  buildHelpers () {
+    this.Vue.prototype.getState = function (name, defaultValue) {
+      return get(this.$store.state, name, defaultValue)
+    }
   }
 
   renderApp () {
@@ -25,30 +77,5 @@ export default class Robot {
         return <RouterView />
       }
     }
-  }
-
-  render ({ routes, strict }) {
-    this.Vue.config.productionTip = strict
-
-    this.Vue.use(ElementUI)
-    this.Vue.use(VueRouter)
-
-    this.Vue.use(VueMobx, {
-      toJS: toJS,
-      isObservable: isObservable,
-      observable: observable
-    })
-
-    const router = new VueRouter({
-      routes: [
-        ...routes
-      ]
-    })
-
-    new this.Vue({
-      el: '#app',
-      router,
-      render: h => h(this.renderApp())
-    })
   }
 }

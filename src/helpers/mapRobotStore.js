@@ -6,23 +6,10 @@ const state = {
   }
 }
 
-const mutations = {
-  $robotSetMenuCollapse (state, value) {
-    if (value !== true || value !== false) {
-      value = !state.menuCollapse
-    }
-    state.menuCollapse = value
-  },
-  $robotSetSignIn (state, props) {
-    state.signIn = { ...state.signIn, ...props }
-  }
-}
-
-export default () => {
+export default function () {
   return {
     $robot: {
-      state,
-      mutations
+      state
     }
   }
 }

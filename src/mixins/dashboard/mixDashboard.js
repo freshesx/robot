@@ -48,7 +48,7 @@ const Dashboard = {
           backgroundColor='#001529'
           textColor='#A6ADB4'
           activeTextColor='#fff'
-          collapse={this.collapse}
+          collapse={this.menuCollapse}
           uniqueOpened
         >
           {(
@@ -85,7 +85,7 @@ const Dashboard = {
       )
     },
     toggleCollapse () {
-      this.$store.commit('$robotSetMenuCollapse')
+      // this.$store.commit('$robotSetMenuCollapse')
     },
     /**
      * @public
@@ -130,7 +130,7 @@ const Dashboard = {
      * @public
      */
     menuCollapse () {
-      return this.$store.state.$robot.menuCollapse
+      return this.getState('$robot.menuCollapse')
     },
     asideWidth () {
       return this.menuCollapse ? '64px' : '200px'
