@@ -11,8 +11,9 @@ import '../scss/style.scss'
 import '../mixins/dashboard/main.scss'
 
 export default class Robot {
-  constructor ({ modules, strict }) {
+  constructor ({ modules, routes, strict }) {
     this.modules = modules
+    this.routes = routes
     this.strict = strict
   }
 
@@ -40,18 +41,9 @@ export default class Robot {
   buildRouter () {
     this.Vue.use(VueRouter)
 
-    let routes = []
-
-    for (const name in this.modules) {
-      if (this.modules.hasOwnProperty(name)) {
-        const m = this.modules[name]
-        routes = [ ...routes, ...m.routes ]
-      }
-    }
-
     return new VueRouter({
       routes: [
-        ...routes
+        ...this.routes
       ]
     })
   }
