@@ -1,15 +1,14 @@
-const state = {
-  menuCollapse: false,
-  signIn: {
-    username: undefined,
-    password: undefined
-  }
-}
-
 export default function () {
   return {
     $robot: {
-      state
+      state: {
+        // 控制侧边栏折叠和展开
+        menuCollapse: false,
+        signIn: {
+          username: undefined,
+          password: undefined
+        }
+      }
     }
   }
 }
