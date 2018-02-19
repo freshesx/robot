@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import ElementUI from 'element-ui'
 import VueRouter from 'vue-router'
 import get from 'lodash/get'
+import isFunction from 'lodash/isFunction'
 import mapRobotStore from '../helpers/mapRobotStore.js'
 import '../scss/reset.css'
 import '../scss/style.scss'
@@ -98,13 +99,28 @@ export default class Robot {
     let newMutations = {}
 
     Object.keys(states).forEach(name => {
-      const fn = function (state, props) {
-        state[name] = props
-      }
+      const fn = this.buildMutationFn(name)
       newMutations = { ...newMutations, ...{ [`${prefix}.${name}`]: fn } }
     })
 
     return newMutations
+  }
+
+  buildMutationFn (name) {
+    /**
+     * @example
+     * this.setState('module.some', prev => !prev)
+     * this.setState('module.some', false)
+     */
+    return function (state, props) {
+      if (isFunction(props)) {
+        // @todo 为 state 判断类型，添加浅度复制，
+        // 防止开发者直接修改 state 数据
+        state[name] = props(state[name])
+      } else {
+        state[name] = props
+      }
+    }
   }
 
   renderApp () {
