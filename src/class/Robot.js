@@ -75,7 +75,6 @@ export default class Robot {
     }
 
     this.Vue.prototype.$w = this.Vue.prototype.setState = function (name, newValue) {
-      console.log('hihihihihi')
       return this.$store.commit(name, newValue)
     }
   }
