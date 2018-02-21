@@ -11,15 +11,15 @@ import '../scss/style.scss'
 import '../mixins/dashboard/main.scss'
 
 export default class Robot {
-  constructor ({ state, routes, strict }) {
+  constructor ({ state, routes, debug }) {
     this.state = state
     this.routes = routes
-    this.strict = strict
+    this.debug = debug
   }
 
   install (Vue) {
     this.Vue = Vue
-    this.Vue.config.productionTip = this.strict
+    this.Vue.config.productionTip = this.debug
 
     this.buildUiComponents()
     const store = this.buildStore()
@@ -57,7 +57,7 @@ export default class Robot {
       modules: {
         ...robotModule
       },
-      strict: this.strict
+      strict: this.debug
     })
   }
 

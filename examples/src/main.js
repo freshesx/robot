@@ -8,7 +8,7 @@ import '../../dist/main.css'
 const robot = new Robot({
   state,
   routes,
-  strict: process.env.NODE_ENV !== 'production'
+  debug: process.env.NODE_ENV !== 'production'
 })
 
 Vue.use(robot)
