@@ -11,8 +11,8 @@ import '../scss/style.scss'
 import '../mixins/dashboard/main.scss'
 
 export default class Robot {
-  constructor ({ modules, routes, strict }) {
-    this.modules = modules
+  constructor ({ state, routes, strict }) {
+    this.state = state
     this.routes = routes
     this.strict = strict
   }
@@ -71,16 +71,16 @@ export default class Robot {
     }
   }
 
-  parseState (modules) {
+  parseState (stateMap) {
     let newModules = {}
 
-    Object.keys(modules).forEach(name => {
-      const m = modules[name]
-      const o = {
-        state: m.state,
-        mutations: this.parseMutations(m.state, name)
+    Object.keys(stateMap).forEach(name => {
+      const state = stateMap[name]
+      const output = {
+        state: state,
+        mutations: this.parseMutations(state, name)
       }
-      newModules = { ...newModules, ...{ [name]: o } }
+      newModules = { ...newModules, ...{ [name]: output } }
     })
 
     return newModules
