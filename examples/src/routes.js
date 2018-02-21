@@ -1,4 +1,4 @@
-import dashboard from './components/dashboard'
+import dashboard from './components/dashboard/routes'
 // import sign from './components/sign'
 
 export default [
