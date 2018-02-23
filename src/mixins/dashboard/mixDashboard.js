@@ -63,7 +63,7 @@ const Dashboard = {
     },
     renderItem (h, item) {
       return (
-        <MenuItem index={item.id.toString()} onClick={this.clickMenuItem}>
+        <MenuItem index={item.id.toString()} onClick={event => this.clickMenuItem(event, item)}>
           <i class={{ [item.icon]: true }} />
           <span slot='title'>{item.title}</span>
         </MenuItem>
@@ -90,8 +90,10 @@ const Dashboard = {
     /**
      * @public
      * @param {VueEvent} event
+     * @param {Object} item - route item
      */
-    clickMenuItem (event) {
+    clickMenuItem (event, item) {
+      this.$router.push(item.router)
     }
   },
   computed: {
