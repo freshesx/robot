@@ -19,8 +19,8 @@ export default [
   },
   {
     id: 4,
-    title: '用户模块',
-    router: { name: 'homepage' },
+    title: '设置',
+    router: { name: 'setting' },
     icon: 'el-icon-setting'
   }
 ]
