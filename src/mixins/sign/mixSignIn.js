@@ -55,7 +55,7 @@ const SignIn = {
               textAlign: 'center',
               marginTop: '-30px'
             }}>
-              FRESHES
+              ROBOT
             </h1>
             <div style={{
               textAlign: 'center',
