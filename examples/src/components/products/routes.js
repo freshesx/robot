@@ -1,7 +1,7 @@
 export default [
   {
     path: 'products',
-    name: 'products.index',
+    name: 'products',
     component: () => import('./index.js')
   }
 ]
