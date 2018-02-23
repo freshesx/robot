@@ -1,5 +1,6 @@
 import homepage from '../homepage/routes.js'
 import products from '../products/routes.js'
+import setting from '../setting/routes.js'
 
 export default [
   {
@@ -7,7 +8,8 @@ export default [
     component: () => import('./index.js'),
     children: [
       ...homepage,
-      ...products
+      ...products,
+      ...setting
     ]
   }
 ]
